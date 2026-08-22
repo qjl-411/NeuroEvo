@@ -1,0 +1,11 @@
+{
+  "name": "neuroevo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/web"],
+  "scripts": {
+    "web:dev": "npm --workspace @neuroevo/web run dev",
+    "web:build": "npm --workspace @neuroevo/web run build",
+    "web:typecheck": "npm --workspace @neuroevo/web run typecheck"
+  }
+}

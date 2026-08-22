@@ -1,0 +1,1081 @@
+<main id="scene" aria-label="脑部模型、分子能量环与胶囊组成的科技视觉页面">
+    <div class="hero-area">
+    <canvas id="neural-background" aria-hidden="true"></canvas>
+    <canvas id="stars" aria-hidden="true"></canvas>
+    <div class="scan-sweep" aria-hidden="true"></div>
+
+    <header class="brand-bar">
+      <div class="brand-brand">
+        <div class="brand-logo-wrap">
+          <img class="brand-logo" src="/assets/brand/logo.webp" alt="NeuroEvo-AD Logo" />
+          <span class="brand-logo-ring" aria-hidden="true"></span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">NeuroEvo-AD</span>
+          <span class="brand-subtitle">脑影智析平台</span>
+        </div>
+      </div>
+
+      <nav class="brand-nav" aria-label="主导航">
+        <a href="/" class="brand-nav-item is-active" data-app-route="/">首页<span class="brand-nav-underline"></span></a>
+        <a href="/workspace" class="brand-nav-item" data-app-route="/workspace">工作台<span class="brand-nav-underline"></span></a>
+        <a href="/reports" class="brand-nav-item" data-app-route="/reports">报告中心<span class="brand-nav-underline"></span></a>
+      </nav>
+
+      <div class="brand-actions">
+        <button class="brand-icon-btn" type="button" aria-label="搜索">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+        </button>
+        <button class="brand-icon-btn has-dot" type="button" aria-label="通知">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
+          <span class="brand-notif-dot" aria-hidden="true"></span>
+        </button>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <button class="brand-user-btn" type="button" aria-label="用户菜单">
+          <span class="brand-user-avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 21c0-4 4-7 8-7s8 3 8 7"></path>
+            </svg>
+          </span>
+          <span class="brand-user-info">
+            <span class="brand-user-name">研究者</span>
+            <span class="brand-user-role">神经影像分析师</span>
+          </span>
+          <svg class="brand-user-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <svg class="ring-source" width="0" height="0" aria-hidden="true">
+      <defs>
+
+
+  <linearGradient id="bluePurpleA" x1="4%" y1="44%" x2="96%" y2="56%">
+    <stop offset="0%"   stop-color="#061A66"/>
+    <stop offset="18%"  stop-color="#06389C"/>
+    <stop offset="36%"  stop-color="#0B52D2"/>
+    <stop offset="52%"  stop-color="#2748C3"/>
+    <stop offset="70%"  stop-color="#492DB2"/>
+    <stop offset="86%"  stop-color="#6825B2"/>
+    <stop offset="100%" stop-color="#293494"/>
+  </linearGradient>
+
+  <linearGradient id="bluePurpleB" x1="8%" y1="48%" x2="92%" y2="52%">
+    <stop offset="0%"   stop-color="#1646B6"/>
+    <stop offset="28%"  stop-color="#2868E7"/>
+    <stop offset="52%"  stop-color="#4D59DF"/>
+    <stop offset="76%"  stop-color="#6D38CF"/>
+    <stop offset="100%" stop-color="#4437B9"/>
+  </linearGradient>
+
+  <linearGradient id="bluePurpleC" x1="0%" y1="50%" x2="100%" y2="50%">
+    <stop offset="0%"   stop-color="#315FCB"/>
+    <stop offset="50%"  stop-color="#635DD8"/>
+    <stop offset="100%" stop-color="#7337C2"/>
+  </linearGradient>
+
+  <filter id="tinyGlow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="2.1" result="b"/>
+    <feMerge>
+      <feMergeNode in="b"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <filter id="chemGlow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="1.8" result="b"/>
+    <feMerge>
+      <feMergeNode in="b"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+
+  <radialGradient id="pBlue">
+    <stop offset="0%" stop-color="#F7FAFF"/>
+    <stop offset="32%" stop-color="#6689F5"/>
+    <stop offset="100%" stop-color="#143BAA"/>
+  </radialGradient>
+
+  <radialGradient id="pPurple">
+    <stop offset="0%" stop-color="#FFF8FF"/>
+    <stop offset="32%" stop-color="#A86FEB"/>
+    <stop offset="100%" stop-color="#5923AD"/>
+  </radialGradient>
+
+  <!-- ===== Chemistry templates ===== -->
+
+  <g id="chem-amide">
+    <line class="chem-bond" x1="-42" y1="0" x2="-16" y2="0"/>
+    <line class="chem-bond" x1="-16" y1="0" x2="4" y2="-15"/>
+    <line class="chem-bond" x1="4" y1="-15" x2="26" y2="-4"/>
+    <line class="chem-bond" x1="4" y1="-15" x2="6" y2="-39"/>
+    <line class="chem-bond soft" x1="8" y1="-15" x2="10" y2="-39"/>
+    <line class="chem-bond" x1="26" y1="-4" x2="48" y2="8"/>
+    <text class="chem-text" x="-57" y="5">HO</text>
+    <text class="chem-text blue" x="-20" y="17">N</text>
+    <text class="chem-text" x="1" y="-44">O</text>
+    <text class="chem-text" x="48" y="14">OH</text>
+  </g>
+
+  <g id="chem-branch">
+    <polyline class="chem-bond" points="-54,0 -30,-15 -5,0 20,-15 45,0"/>
+    <line class="chem-bond" x1="-5" y1="0" x2="-7" y2="26"/>
+    <line class="chem-bond" x1="20" y1="-15" x2="20" y2="-41"/>
+    <line class="chem-bond soft" x1="45" y1="0" x2="62" y2="18"/>
+    <text class="chem-text" x="-18" y="40">OH</text>
+    <text class="chem-text blue" x="9" y="-47">NH₂</text>
+    <text class="chem-text" x="60" y="31">O</text>
+  </g>
+
+  <g id="chem-peptide">
+    <polyline class="chem-bond"
+      points="-74,12 -50,-5 -26,8 -2,-15 22,-2 47,-21 70,-8"/>
+    <line class="chem-bond" x1="-26" y1="8" x2="-24" y2="32"/>
+    <line class="chem-bond soft" x1="-21" y1="8" x2="-19" y2="32"/>
+    <line class="chem-bond" x1="22" y1="-2" x2="24" y2="22"/>
+    <line class="chem-bond soft" x1="27" y1="-2" x2="29" y2="22"/>
+    <text class="chem-text" x="-30" y="46">O</text>
+    <text class="chem-text blue" x="-7" y="-18">N</text>
+    <text class="chem-text" x="22" y="36">O</text>
+    <text class="chem-text violet" x="69" y="-6">OH</text>
+    <text class="chem-text" x="-90" y="18">H₂N</text>
+  </g>
+
+  <g id="chem-aromatic">
+    <polygon class="chem-bond" points="-28,0 -14,-24 14,-24 28,0 14,24 -14,24"/>
+    <line class="chem-bond soft" x1="-9" y1="-18" x2="9" y2="-18"/>
+    <line class="chem-bond soft" x1="18" y1="3" x2="9" y2="18"/>
+    <line class="chem-bond soft" x1="-18" y1="3" x2="-9" y2="18"/>
+    <line class="chem-bond" x1="28" y1="0" x2="51" y2="-7"/>
+    <line class="chem-bond" x1="-28" y1="0" x2="-48" y2="-12"/>
+    <text class="chem-text blue" x="52" y="-3">NH₂</text>
+    <text class="chem-text" x="-67" y="-10">O</text>
+  </g>
+
+  <g id="chem-chain">
+    <polyline class="chem-bond" points="-46,-10 -24,0 0,-8 25,3 51,-6"/>
+    <line class="chem-bond accent-blue" x1="0" y1="-8" x2="5" y2="-33"/>
+    <line class="chem-bond accent-violet" x1="25" y1="3" x2="41" y2="24"/>
+    <text class="chem-text" x="-62" y="-8">HO</text>
+    <text class="chem-text" x="1" y="-38">O</text>
+    <text class="chem-text violet" x="43" y="36">OH</text>
+  </g>
+
+  <g id="chem-small">
+    <line class="chem-bond" x1="-22" y1="0" x2="-5" y2="-10"/>
+    <line class="chem-bond" x1="-5" y1="-10" x2="16" y2="0"/>
+    <line class="chem-bond soft" x1="16" y1="0" x2="32" y2="-10"/>
+    <text class="chem-text" x="-35" y="4">HO</text>
+    <text class="chem-text blue" x="30" y="-6">N</text>
+  </g>
+
+
+  <g id="chem-biaryl">
+    <polygon class="chem-bond" points="-56,0 -43,-21 -19,-21 -6,0 -19,21 -43,21"/>
+    <line class="chem-bond soft" x1="-37" y1="-16" x2="-24" y2="-16"/>
+    <line class="chem-bond soft" x1="-10" y1="3" x2="-18" y2="16"/>
+    <line class="chem-bond soft" x1="-52" y1="3" x2="-44" y2="16"/>
+    <line class="chem-bond" x1="-6" y1="0" x2="9" y2="0"/>
+    <polygon class="chem-bond accent-violet" points="21,0 34,-21 58,-21 71,0 58,21 34,21"/>
+    <line class="chem-bond soft" x1="40" y1="-16" x2="53" y2="-16"/>
+    <line class="chem-bond soft" x1="67" y1="3" x2="59" y2="16"/>
+    <line class="chem-bond soft" x1="25" y1="3" x2="33" y2="16"/>
+    <line class="chem-bond" x1="-56" y1="0" x2="-76" y2="-10"/>
+    <line class="chem-bond" x1="71" y1="0" x2="92" y2="12"/>
+    <text class="chem-text blue" x="-95" y="-8">NH₂</text>
+    <text class="chem-text" x="94" y="19">OH</text>
+    <text class="chem-text violet" x="2" y="-28">O</text>
+  </g>
+
+  <g id="chem-benzamide">
+    <polygon class="chem-bond" points="-34,0 -20,-24 8,-24 22,0 8,24 -20,24"/>
+    <line class="chem-bond soft" x1="-14" y1="-18" x2="4" y2="-18"/>
+    <line class="chem-bond soft" x1="12" y1="3" x2="3" y2="18"/>
+    <line class="chem-bond soft" x1="-24" y1="3" x2="-15" y2="18"/>
+    <line class="chem-bond" x1="22" y1="0" x2="45" y2="-8"/>
+    <line class="chem-bond" x1="45" y1="-8" x2="66" y2="2"/>
+    <line class="chem-bond" x1="45" y1="-8" x2="47" y2="-34"/>
+    <line class="chem-bond soft" x1="49" y1="-8" x2="51" y2="-34"/>
+    <text class="chem-text" x="41" y="-39">O</text>
+    <text class="chem-text blue" x="66" y="8">NH₂</text>
+    <text class="chem-text violet" x="-55" y="3">HO</text>
+    <line class="chem-bond" x1="-34" y1="0" x2="-53" y2="0"/>
+  </g>
+
+  <g id="chem-fused">
+    <polygon class="chem-bond" points="-44,0 -31,-20 -9,-20 4,0 -9,20 -31,20"/>
+    <polygon class="chem-bond accent-blue" points="4,0 17,-20 39,-20 52,0 39,20 17,20"/>
+    <line class="chem-bond soft" x1="-25" y1="-15" x2="-12" y2="-15"/>
+    <line class="chem-bond soft" x1="23" y1="-15" x2="36" y2="-15"/>
+    <line class="chem-bond soft" x1="-35" y1="3" x2="-27" y2="15"/>
+    <line class="chem-bond soft" x1="43" y1="3" x2="35" y2="15"/>
+    <line class="chem-bond" x1="52" y1="0" x2="76" y2="-9"/>
+    <line class="chem-bond" x1="76" y1="-9" x2="95" y2="2"/>
+    <text class="chem-text blue" x="94" y="8">N</text>
+    <text class="chem-text" x="72" y="-14">O</text>
+    <line class="chem-bond" x1="-44" y1="0" x2="-66" y2="10"/>
+    <text class="chem-text violet" x="-86" y="16">OH</text>
+  </g>
+
+  <!-- 长链模板：连续不断开的碳链 -->
+  <g id="chem-longchain">
+    <polyline class="chem-bond" points="-110,4 -88,-8 -66,2 -44,-10 -22,0 0,-12 22,-2 44,-14 66,-4 88,-16 110,-6"/>
+    <line class="chem-bond soft" x1="-66" y1="2" x2="-44" y2="-10"/>
+    <line class="chem-bond accent-blue" x1="0" y1="-12" x2="22" y2="-2"/>
+    <text class="chem-text" x="-126" y="8">HO</text>
+    <text class="chem-text blue" x="-6" y="-24">O</text>
+    <text class="chem-text violet" x="112" y="-2">OH</text>
+  </g>
+
+  <!-- 长链+苯环：中间一个苯环连接两侧长链 -->
+  <g id="chem-polymer">
+    <polyline class="chem-bond" points="-95,6 -72,-6 -48,2"/>
+    <polygon class="chem-bond" points="-24,0 -12,-20 12,-20 24,0 12,20 -12,20"/>
+    <line class="chem-bond soft" x1="-6" y1="-15" x2="6" y2="-15"/>
+    <line class="chem-bond soft" x1="18" y1="3" x2="11" y2="15"/>
+    <line class="chem-bond soft" x1="-18" y1="3" x2="-11" y2="15"/>
+    <line class="chem-bond" x1="-48" y1="2" x2="-24" y2="0"/>
+    <polyline class="chem-bond" points="24,0 48,-10 72,-2 96,-12"/>
+    <line class="chem-bond accent-blue" x1="48" y1="-10" x2="72" y2="-2"/>
+    <text class="chem-text" x="-111" y="10">H₂N</text>
+    <text class="chem-text blue" x="96" y="-18">OH</text>
+    <text class="chem-text violet" x="-2" y="-28">O</text>
+  </g>
+
+  <!-- 双苯环长链：两个苯环串联+两侧延伸 -->
+  <g id="chem-extended">
+    <polyline class="chem-bond" points="-105,4 -82,-8 -58,0"/>
+    <polygon class="chem-bond" points="-34,0 -22,-20 0,-20 12,0 0,20 -22,20"/>
+    <line class="chem-bond soft" x1="-16" y1="-15" x2="-6" y2="-15"/>
+    <line class="chem-bond soft" x1="6" y1="3" x2="0" y2="15"/>
+    <line class="chem-bond soft" x1="-28" y1="3" x2="-22" y2="15"/>
+    <line class="chem-bond" x1="-58" y1="0" x2="-34" y2="0"/>
+    <line class="chem-bond" x1="12" y1="0" x2="30" y2="0"/>
+    <polygon class="chem-bond accent-violet" points="30,0 42,-20 64,-20 76,0 64,20 42,20"/>
+    <line class="chem-bond soft" x1="48" y1="-15" x2="58" y2="-15"/>
+    <line class="chem-bond soft" x1="70" y1="3" x2="64" y2="15"/>
+    <line class="chem-bond soft" x1="36" y1="3" x2="42" y2="15"/>
+    <polyline class="chem-bond" points="76,0 98,-10 118,-2"/>
+    <text class="chem-text" x="-121" y="8">HO</text>
+    <text class="chem-text blue" x="118" y="-14">NH₂</text>
+    <text class="chem-text" x="-4" y="-28">O</text>
+  </g>
+
+
+      </defs>
+      <symbol id="ringSymbol" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet">
+<g id="systemLayer">
+  <g id="fibers"></g>
+  <g id="highlights"></g>
+  <g id="particles"></g>
+  <!-- 只保留一层化学结构：完整结构式（chemistry），去掉 carbonChemistry 底层避免重影 -->
+  <g id="carbonChemistry" style="display:none"></g>
+  <g id="chemistry" filter="url(#chemGlow)"></g>
+</g>
+      </symbol>
+    </svg>
+
+    <svg class="ring-layer ring-back" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <use href="#ringSymbol"></use>
+    </svg>
+
+    <section class="brain-stage" aria-label="可拖拽旋转的全息脑部 3D 模型">
+      <canvas id="brainCanvas"></canvas>
+      <div id="brainLoading" class="brain-loading" aria-live="polite">LOADING 3D</div>
+    </section>
+
+    <section class="pill-radar" aria-hidden="true"></section>
+
+    <section class="pill-wrap" aria-label="可拖拽旋转的发光胶囊">
+      <div class="pill-stage" id="pillStage" title="可拖拽旋转的发光胶囊">
+        <svg viewBox="430 240 690 1610" xmlns="http://www.w3.org/2000/svg" aria-label="蓝色发光胶囊" preserveAspectRatio="xMidYMid meet" style="overflow:visible">
+          <defs>
+            <radialGradient id="pill_bg" cx="50%" cy="43%" r="74%">
+              <stop offset="0%" stop-color="#021c4a"/><stop offset="25%" stop-color="#011235"/>
+              <stop offset="52%" stop-color="#00091f"/><stop offset="78%" stop-color="#000512"/>
+              <stop offset="100%" stop-color="#00020a"/>
+            </radialGradient>
+            <radialGradient id="pill_halo" cx="50%" cy="48%" r="62%">
+              <stop offset="0%" stop-color="#045dd6" stop-opacity=".24"/>
+              <stop offset="38%" stop-color="#033f96" stop-opacity=".15"/>
+              <stop offset="72%" stop-color="#022454" stop-opacity=".06"/>
+              <stop offset="100%" stop-color="#000a1e" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="pill_lidX" x1="0%" x2="100%">
+              <stop offset="0%" stop-color="#edfaff"/><stop offset="1.5%" stop-color="#a7e1ff"/>
+              <stop offset="5.7%" stop-color="#b7d1fc"/><stop offset="13.4%" stop-color="#1b2a55"/>
+              <stop offset="21.0%" stop-color="#364985"/><stop offset="28.6%" stop-color="#829bde"/>
+              <stop offset="36.3%" stop-color="#c1d3fa"/><stop offset="43.9%" stop-color="#4d68af"/>
+              <stop offset="51.5%" stop-color="#29396d"/><stop offset="59.2%" stop-color="#233264"/>
+              <stop offset="66.8%" stop-color="#09112c"/><stop offset="74.4%" stop-color="#070e26"/>
+              <stop offset="82.1%" stop-color="#32498c"/><stop offset="89.7%" stop-color="#233f83"/>
+              <stop offset="97.3%" stop-color="#badefe"/><stop offset="100%" stop-color="#f5fcff"/>
+            </linearGradient>
+            <linearGradient id="pill_lidVertical" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#9dc9ff" stop-opacity=".36"/>
+              <stop offset="22%" stop-color="#4263a5" stop-opacity=".04"/>
+              <stop offset="77%" stop-color="#07142d" stop-opacity=".03"/>
+              <stop offset="100%" stop-color="#061026" stop-opacity=".42"/>
+            </linearGradient>
+            <radialGradient id="pill_lidTop" cx="44%" cy="12%" r="58%">
+              <stop offset="0%" stop-color="#dceaff" stop-opacity=".46"/>
+              <stop offset="27%" stop-color="#7593d9" stop-opacity=".18"/>
+              <stop offset="70%" stop-color="#07142f" stop-opacity=".04"/>
+              <stop offset="100%" stop-color="#02091c" stop-opacity=".34"/>
+            </radialGradient>
+            <radialGradient id="pill_lidHotspot" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".90"/>
+              <stop offset="24%" stop-color="#edf5ff" stop-opacity=".74"/>
+              <stop offset="58%" stop-color="#c6d9ff" stop-opacity=".28"/>
+              <stop offset="100%" stop-color="#91b4ff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="pill_bodyX" x1="0%" x2="100%">
+              <stop offset="0%" stop-color="#8adfff" stop-opacity=".18"/>
+              <stop offset="4%" stop-color="#0f68c8" stop-opacity=".12"/>
+              <stop offset="17%" stop-color="#002d66" stop-opacity=".12"/>
+              <stop offset="48%" stop-color="#000f2d" stop-opacity=".25"/>
+              <stop offset="82%" stop-color="#00224e" stop-opacity=".15"/>
+              <stop offset="96%" stop-color="#126fca" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#b7ecff" stop-opacity=".18"/>
+            </linearGradient>
+            <linearGradient id="pill_bodyY" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#000b25" stop-opacity=".50"/>
+              <stop offset="12%" stop-color="#002451" stop-opacity=".14"/>
+              <stop offset="70%" stop-color="#000e2d" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#04397e" stop-opacity=".22"/>
+            </linearGradient>
+            <linearGradient id="pill_seam" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#b6e6ff"/><stop offset="8%" stop-color="#2d90f3"/>
+              <stop offset="24%" stop-color="#1142a0"/><stop offset="43%" stop-color="#04143f"/>
+              <stop offset="72%" stop-color="#010820"/><stop offset="88%" stop-color="#113f8f"/>
+              <stop offset="100%" stop-color="#69baff"/>
+            </linearGradient>
+            <radialGradient id="pill_molBlue" cx="30%" cy="24%" r="78%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="13%" stop-color="#bfe9ff"/>
+              <stop offset="38%" stop-color="#4aa7ff"/>
+              <stop offset="72%" stop-color="#1267db"/>
+              <stop offset="100%" stop-color="#052b7c"/>
+            </radialGradient>
+            <radialGradient id="pill_molWhite" cx="29%" cy="23%" r="80%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="38%" stop-color="#f8fbff"/>
+              <stop offset="73%" stop-color="#c9ddf4"/>
+              <stop offset="100%" stop-color="#7798bd"/>
+            </radialGradient>
+            <linearGradient id="pill_molBond" x1="0%" x2="100%">
+              <stop offset="0%" stop-color="#9ddcff"/>
+              <stop offset="48%" stop-color="#f8fcff"/>
+              <stop offset="100%" stop-color="#4b9dff"/>
+            </linearGradient>
+            <filter id="pill_shellGlow" x="-70%" y="-60%" width="240%" height="220%">
+              <feGaussianBlur stdDeviation="22"/>
+            </filter>
+            <filter id="pill_blur12" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="12"/>
+            </filter>
+            <filter id="pill_blur20" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="20"/>
+            </filter>
+            <filter id="pill_moleculeGlow" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="4.2"/>
+            </filter>
+            <!-- 左下囊壁"被光束打断"的缺口 mask：白色=显示描边，黑色=擦除 -->
+            <linearGradient id="pill_breakFeather" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0%"  stop-color="#ffffff"/>
+              <stop offset="12%" stop-color="#000000"/>
+              <stop offset="88%" stop-color="#000000"/>
+              <stop offset="100%" stop-color="#ffffff"/>
+            </linearGradient>
+            <mask id="pill_leftWallBreakMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1284" height="2100">
+              <rect width="1284" height="2100" fill="#ffffff"/>
+              <!-- 缺口位置：body 左壁底部弧线段 y≈1600~1740 -->
+              <rect x="460" y="1600" width="90" height="140" fill="url(#pill_breakFeather)"/>
+            </mask>
+            <clipPath id="pill_bodyClip">
+              <path d="M510 925 L510 1506 C510 1672 626 1806 772 1806 C918 1806 1034 1672 1034 1506 L1034 925 Q772 875 510 925 Z"/>
+            </clipPath>
+            <g id="pill_moleculeGlyphA">
+              <g opacity=".28" filter="url(#pill_moleculeGlow)" fill="#1979ff" stroke="#6bc5ff">
+                <circle cx="-28" cy="3" r="16"/><circle cx="0" cy="-9" r="14"/><circle cx="27" cy="7" r="15"/>
+              </g>
+              <g fill="none" stroke="url(#pill_molBond)" stroke-width="7.2" stroke-linecap="round">
+                <line x1="-28" y1="3" x2="0" y2="-9"/><line x1="0" y1="-9" x2="27" y2="7"/>
+                <line x1="-28" y1="3" x2="-48" y2="-21"/><line x1="-28" y1="3" x2="-48" y2="27"/>
+                <line x1="0" y1="-9" x2="2" y2="-36"/><line x1="27" y1="7" x2="49" y2="-13"/><line x1="27" y1="7" x2="47" y2="31"/>
+              </g>
+              <g stroke="#e6f6ff" stroke-opacity=".74" stroke-width="1.2">
+                <circle cx="-28" cy="3" r="16" fill="url(#pill_molBlue)"/><circle cx="0" cy="-9" r="14" fill="url(#pill_molBlue)"/><circle cx="27" cy="7" r="15" fill="url(#pill_molBlue)"/>
+                <circle cx="-48" cy="-21" r="9" fill="url(#pill_molWhite)"/><circle cx="-48" cy="27" r="9" fill="url(#pill_molWhite)"/>
+                <circle cx="2" cy="-36" r="8.5" fill="url(#pill_molWhite)"/><circle cx="49" cy="-13" r="9" fill="url(#pill_molWhite)"/><circle cx="47" cy="31" r="9" fill="url(#pill_molWhite)"/>
+              </g>
+              <g fill="#fff" opacity=".86"><ellipse cx="-34" cy="-3" rx="4.8" ry="3"/><ellipse cx="-5" cy="-14" rx="4" ry="2.5"/><ellipse cx="22" cy="1" rx="4.4" ry="2.8"/></g>
+            </g>
+            <g id="pill_moleculeGlyphB">
+              <g opacity=".27" filter="url(#pill_moleculeGlow)" fill="#1a77ff"><circle cx="0" cy="0" r="18"/><circle cx="30" cy="-5" r="14"/></g>
+              <g fill="none" stroke="url(#pill_molBond)" stroke-width="7.6" stroke-linecap="round">
+                <line x1="0" y1="0" x2="30" y2="-5"/><line x1="0" y1="0" x2="-29" y2="-26"/><line x1="0" y1="0" x2="-33" y2="24"/>
+                <line x1="0" y1="0" x2="2" y2="38"/><line x1="30" y1="-5" x2="50" y2="-29"/><line x1="30" y1="-5" x2="53" y2="20"/>
+              </g>
+              <g stroke="#e6f6ff" stroke-opacity=".75" stroke-width="1.2">
+                <circle cx="0" cy="0" r="18" fill="url(#pill_molBlue)"/><circle cx="30" cy="-5" r="14" fill="url(#pill_molBlue)"/>
+                <circle cx="-29" cy="-26" r="9.5" fill="url(#pill_molWhite)"/><circle cx="-33" cy="24" r="9.5" fill="url(#pill_molWhite)"/><circle cx="2" cy="38" r="9" fill="url(#pill_molWhite)"/>
+                <circle cx="50" cy="-29" r="9" fill="url(#pill_molWhite)"/><circle cx="53" cy="20" r="9" fill="url(#pill_molWhite)"/>
+              </g>
+              <g fill="#fff" opacity=".88"><ellipse cx="-7" cy="-7" rx="5.2" ry="3.2"/><ellipse cx="25" cy="-10" rx="4" ry="2.6"/></g>
+            </g>
+            <g id="pill_moleculeGlyphC">
+              <g opacity=".24" filter="url(#pill_moleculeGlow)" fill="#1979ff"><circle cx="0" cy="0" r="50"/></g>
+              <g fill="none" stroke="url(#pill_molBond)" stroke-width="6.3" stroke-linecap="round">
+                <path d="M0 -31 L27 -16 L27 16 L0 31 L-27 16 L-27 -16 Z"/>
+                <line x1="0" y1="-31" x2="0" y2="-52"/><line x1="27" y1="-16" x2="46" y2="-28"/><line x1="27" y1="16" x2="47" y2="28"/>
+                <line x1="0" y1="31" x2="0" y2="53"/><line x1="-27" y1="16" x2="-47" y2="28"/><line x1="-27" y1="-16" x2="-46" y2="-28"/>
+              </g>
+              <g stroke="#e7f7ff" stroke-opacity=".72" stroke-width="1.1">
+                <circle cx="0" cy="-31" r="12.5" fill="url(#pill_molBlue)"/><circle cx="27" cy="-16" r="12.5" fill="url(#pill_molBlue)"/><circle cx="27" cy="16" r="12.5" fill="url(#pill_molBlue)"/>
+                <circle cx="0" cy="31" r="12.5" fill="url(#pill_molBlue)"/><circle cx="-27" cy="16" r="12.5" fill="url(#pill_molBlue)"/><circle cx="-27" cy="-16" r="12.5" fill="url(#pill_molBlue)"/>
+                <circle cx="0" cy="-52" r="7.5" fill="url(#pill_molWhite)"/><circle cx="46" cy="-28" r="7.5" fill="url(#pill_molWhite)"/><circle cx="47" cy="28" r="7.5" fill="url(#pill_molWhite)"/>
+                <circle cx="0" cy="53" r="7.5" fill="url(#pill_molWhite)"/><circle cx="-47" cy="28" r="7.5" fill="url(#pill_molWhite)"/><circle cx="-46" cy="-28" r="7.5" fill="url(#pill_molWhite)"/>
+              </g>
+              <g fill="#fff" opacity=".78"><circle cx="-4" cy="-35" r="3"/><circle cx="23" cy="-20" r="3"/><circle cx="23" cy="12" r="3"/></g>
+            </g>
+            <g id="pill_moleculeGlyphD">
+              <g opacity=".28" filter="url(#pill_moleculeGlow)" fill="#1979ff"><circle cx="0" cy="-20" r="15"/><circle cx="-25" cy="18" r="15"/><circle cx="26" cy="18" r="15"/></g>
+              <g fill="none" stroke="url(#pill_molBond)" stroke-width="7" stroke-linecap="round">
+                <path d="M0 -20 L-25 18 L26 18 Z"/><line x1="0" y1="-20" x2="0" y2="-47"/><line x1="-25" y1="18" x2="-49" y2="32"/><line x1="26" y1="18" x2="50" y2="33"/>
+              </g>
+              <g stroke="#e6f6ff" stroke-opacity=".74" stroke-width="1.2">
+                <circle cx="0" cy="-20" r="15" fill="url(#pill_molBlue)"/><circle cx="-25" cy="18" r="15" fill="url(#pill_molBlue)"/><circle cx="26" cy="18" r="15" fill="url(#pill_molBlue)"/>
+                <circle cx="0" cy="-47" r="9" fill="url(#pill_molWhite)"/><circle cx="-49" cy="32" r="9" fill="url(#pill_molWhite)"/><circle cx="50" cy="33" r="9" fill="url(#pill_molWhite)"/>
+              </g>
+              <g fill="#fff" opacity=".86"><ellipse cx="-5" cy="-25" rx="4.4" ry="2.8"/><ellipse cx="-30" cy="13" rx="4.4" ry="2.8"/><ellipse cx="21" cy="13" rx="4.4" ry="2.8"/></g>
+            </g>
+            <g id="pill_moleculeGlyphE">
+              <g opacity=".25" filter="url(#pill_moleculeGlow)" fill="#1979ff"><circle cx="-34" cy="-8" r="14"/><circle cx="-5" cy="6" r="15"/><circle cx="27" cy="-5" r="14"/></g>
+              <g fill="none" stroke="url(#pill_molBond)" stroke-width="6.8" stroke-linecap="round">
+                <line x1="-34" y1="-8" x2="-5" y2="6"/><line x1="-5" y1="6" x2="27" y2="-5"/><line x1="27" y1="-5" x2="51" y2="13"/>
+                <line x1="-34" y1="-8" x2="-49" y2="-32"/><line x1="-34" y1="-8" x2="-53" y2="14"/><line x1="-5" y1="6" x2="-5" y2="36"/><line x1="27" y1="-5" x2="39" y2="-31"/>
+              </g>
+              <g stroke="#e6f6ff" stroke-opacity=".74" stroke-width="1.15">
+                <circle cx="-34" cy="-8" r="14" fill="url(#pill_molBlue)"/><circle cx="-5" cy="6" r="15" fill="url(#pill_molBlue)"/><circle cx="27" cy="-5" r="14" fill="url(#pill_molBlue)"/>
+                <circle cx="51" cy="13" r="9" fill="url(#pill_molBlue)"/><circle cx="-49" cy="-32" r="8.5" fill="url(#pill_molWhite)"/><circle cx="-53" cy="14" r="8.5" fill="url(#pill_molWhite)"/>
+                <circle cx="-5" cy="36" r="8.5" fill="url(#pill_molWhite)"/><circle cx="39" cy="-31" r="8.5" fill="url(#pill_molWhite)"/>
+              </g>
+              <g fill="#fff" opacity=".84"><ellipse cx="-39" cy="-13" rx="4" ry="2.6"/><ellipse cx="-10" cy="1" rx="4.4" ry="2.8"/><ellipse cx="22" cy="-10" rx="4" ry="2.6"/></g>
+            </g>
+          </defs>
+          <path d="M510 925 L510 541 C510 394 627 274 772 274 C917 274 1034 394 1034 541 L1034 925"
+            fill="none" stroke="#0088ff" stroke-width="30" stroke-opacity=".85" filter="url(#pill_shellGlow)"/>
+          <path d="M510 925 L510 1506 C510 1672 626 1806 772 1806 C918 1806 1034 1672 1034 1506 L1034 925"
+            fill="none" stroke="#0088ff" stroke-width="30" stroke-opacity=".82" filter="url(#pill_shellGlow)"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M510 925 L510 1506 C510 1672 626 1806 772 1806 C918 1806 1034 1672 1034 1506 L1034 925 Q772 875 510 925 Z" fill="url(#pill_bodyX)"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M510 925 L510 1506 C510 1672 626 1806 772 1806 C918 1806 1034 1672 1034 1506 L1034 925 Q772 875 510 925 Z" fill="url(#pill_bodyY)"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <g clip-path="url(#pill_bodyClip)">
+            <rect x="682" y="915" width="63" height="870" fill="#7d5dff" opacity=".16" filter="url(#pill_blur12)"/>
+            <ellipse cx="711" cy="1242" rx="90" ry="238" fill="#caa5ff" opacity=".18" filter="url(#pill_blur20)"/>
+            <g id="pill_molecule_field" aria-label="胶囊内自由运动的蓝白球棍分子"></g>
+          </g>
+          <path d="M521 938 L521 1500 C521 1657 628 1787 764 1800"
+            fill="none" stroke="#e8f7ff" stroke-width="7.5" stroke-opacity=".78"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M1023 938 L1023 1500 C1023 1657 916 1787 780 1800"
+            fill="none" stroke="#cdeaff" stroke-width="6.4" stroke-opacity=".68"/>
+          <path d="M532 944 L532 1493 C532 1630 626 1749 750 1782"
+            fill="none" stroke="#067fe9" stroke-width="10" stroke-opacity=".42" filter="url(#pill_blur12)"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M1012 944 L1012 1493 C1012 1630 918 1749 794 1782"
+            fill="none" stroke="#056fd3" stroke-width="9" stroke-opacity=".36" filter="url(#pill_blur12)"/>
+          <path d="M510 925 L510 541 C510 394 627 274 772 274 C917 274 1034 394 1034 541 L1034 925 Q772 875 510 925 Z" fill="url(#pill_lidX)"/>
+          <path d="M510 925 L510 541 C510 394 627 274 772 274 C917 274 1034 394 1034 541 L1034 925 Q772 875 510 925 Z" fill="url(#pill_lidVertical)"/>
+          <path d="M510 925 L510 541 C510 394 627 274 772 274 C917 274 1034 394 1034 541 L1034 925 Q772 875 510 925 Z" fill="url(#pill_lidTop)"/>
+          <ellipse id="pill_lidHotspotEllipse" cx="744" cy="407" rx="78" ry="60" fill="url(#pill_lidHotspot)" filter="url(#pill_blur12)"/>
+          <path id="pill_lidSweepStreak" d="M685 466 C671 575 677 752 690 894" fill="none"
+            stroke="#dce9ff" stroke-width="54" stroke-linecap="round" stroke-opacity=".20" filter="url(#pill_blur12)"/>
+          <path id="pill_lidRimLightLeft" d="M543 899 L543 548 C543 425 636 320 754 295"
+            fill="none" stroke="#edfaff" stroke-width="8.2" stroke-opacity=".50"/>
+          <path id="pill_lidRimLightRight" d="M1017 899 L1017 548 C1017 422 932 322 827 297"
+            fill="none" stroke="#4f8fdb" stroke-width="8.8" stroke-opacity=".40"/>
+          <path d="M510 925 L510 541 C510 394 627 274 772 274 C917 274 1034 394 1034 541 L1034 925 Q772 875 510 925"
+            fill="none" stroke="#e4f6ff" stroke-width="4.6" stroke-opacity=".96"/>
+          <path d="M510 925 L510 1506 C510 1672 626 1806 772 1806 C918 1806 1034 1672 1034 1506 L1034 925"
+            fill="none" stroke="#ddf3ff" stroke-width="4.5" stroke-opacity=".96"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M513 922 L513 548 C513 402 628 282 772 282"
+            fill="none" stroke="#118fe9" stroke-width="7.0" stroke-opacity=".66"/>
+          <path d="M1031 922 L1031 548 C1031 402 916 282 772 282"
+            fill="none" stroke="#117fde" stroke-width="6.5" stroke-opacity=".54"/>
+          <path d="M513 930 L513 1504 C513 1668 627 1799 772 1799"
+            fill="none" stroke="#118fe9" stroke-width="6.8" stroke-opacity=".64"
+            mask="url(#pill_leftWallBreakMask)"/>
+          <path d="M1031 930 L1031 1504 C1031 1668 917 1799 772 1799"
+            fill="none" stroke="#107edd" stroke-width="6.5" stroke-opacity=".55"/>
+          <path d="M510 925 Q772 875 1034 925 L1034 946 Q772 902 510 946 Z"
+            fill="url(#pill_seam)" stroke="#1a92f3" stroke-width="2.2"/>
+          <path d="M526 927 Q772 889 1018 927 Q772 913 526 927 Z"
+            fill="#01081c" opacity=".95"/>
+          <path d="M518 930 Q772 887 1026 930"
+            fill="none" stroke="#9cd9ff" stroke-width="2.2" stroke-opacity=".80"/>
+          <!-- ============================================================
+               左下囊壁"被光束打断"的破碎碎片
+               缺口 y = 1035 ~ 1165，左壁 x ≈ 510
+               两端各画 1~2 个向外（胶囊外，即 x<510 方向）翘起的
+               不规则三角薄片：一面是玻璃深色，一面是高光白边。
+               ============================================================ -->
+          <g id="pill_breakShards" aria-label="打断处飞散的囊壁碎片">
+            <!-- 缺口在 body 左壁底部弧线段 y≈1600~1740，x≈510 -->
+            <!-- 上碎片：缺口上端 y≈1600，向外翘起 -->
+            <polygon points="510,1598 486,1592 475,1613 495,1624"
+                     fill="url(#pill_bodyY)" fill-opacity=".75"
+                     stroke="#e5f5ff" stroke-width="1.3" stroke-opacity=".72"/>
+            <path d="M510 1598 L486 1592" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-opacity=".88" stroke-linecap="round"/>
+            <path d="M486 1592 L475 1613" fill="none" stroke="#9ed8ff" stroke-width="1.2" stroke-opacity=".55"/>
+            <!-- 下碎片：缺口下端 y≈1740（弧线弯曲处），向外翘起 -->
+            <polygon points="495,1742 470,1756 448,1728 470,1714"
+                     fill="url(#pill_lidTop)" fill-opacity=".72"
+                     stroke="#ccebff" stroke-width="1.1" stroke-opacity=".65"/>
+            <path d="M495 1742 L470 1756" fill="none" stroke="#f2fbff" stroke-width="2.0" stroke-opacity=".85" stroke-linecap="round"/>
+            <path d="M470 1756 L448 1728" fill="none" stroke="#9cd9ff" stroke-width="1.2" stroke-opacity=".52"/>
+            <!-- 小碎屑 -->
+            <polygon points="440,1668 426,1662 431,1680" fill="#0d3f8a" stroke="#c6e7ff" stroke-width=".8" stroke-opacity=".6"/>
+            <polygon points="444,1694 428,1701 434,1684" fill="#134ea6" stroke="#b9e2ff" stroke-width=".8" stroke-opacity=".55"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <svg class="ring-layer ring-front" viewBox="0 0 1672 941" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <use href="#ringSymbol"></use>
+    </svg>
+
+    <section class="ring-title" aria-label="NeuroEvo-AD 产品标题">
+      <div class="title-kicker">NEUROIMAGING · EXPLAINABLE · RELIABLE</div>
+      <h1 class="title-main">
+        <span class="title-brand" data-text="NeuroEvo">NeuroEvo</span><span class="title-sep">‑</span><span class="title-model">AD</span>
+      </h1>
+      <div class="title-divider" aria-hidden="true"></div>
+      <h2 class="title-sub">脑影智析平台</h2>
+      <p class="title-desc">
+        基于自主 DMSA‑Net 构建阿尔茨海默病 MRI 智能分析框架，融合影像特征建模、智能分期、定量结果解析与可解释分析，实现从医学影像输入到结构化研究报告生成的一体化分析流程。
+      </p>
+      <div class="title-capabilities" aria-label="平台核心能力">
+        <span class="capability-item"><i aria-hidden="true"></i>四阶段智能分期</span>
+        <span class="capability-item"><i aria-hidden="true"></i>MRI智能识别</span>
+        <span class="capability-item"><i aria-hidden="true"></i>可解释分析</span>
+        <span class="capability-item"><i aria-hidden="true"></i>可信度评估</span>
+      </div>
+      <div class="title-actions">
+        <button class="title-btn title-btn--primary" type="button" data-app-route="/workspace">
+          <span class="btn-label">开始识别</span>
+          <span class="btn-glow" aria-hidden="true"></span>
+          <span class="btn-arrow" aria-hidden="true"></span>
+        </button>
+        <button class="title-btn title-btn--ghost" type="button" data-app-route="/evidence">
+          <span class="btn-label">探索更多</span>
+          <span class="btn-glow" aria-hidden="true"></span>
+          <span class="btn-arrow" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+
+
+    <section class="orbit-carousel" aria-label="围绕中央科研装置旋转的透明信息胶片">
+      <div class="orbit-shade" aria-hidden="true"></div>
+      <div class="orbit-exit-hint" aria-hidden="true">
+        <span class="orbit-exit-hint__dot"></span>
+        <span>点击空白区域即可退出</span>
+      </div>
+      <div class="orbit-stage" id="orbitStage">
+        <div class="orbit-projector" aria-hidden="true"></div>
+        <div class="orbit-axis" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="orbit-floor" aria-hidden="true">
+          <span class="orbit-floor__halo"></span>
+          <span class="orbit-floor__grid"></span>
+          <span class="orbit-floor__ring orbit-floor__ring--a"></span>
+          <span class="orbit-floor__ring orbit-floor__ring--b"></span>
+          <span class="orbit-floor__ring orbit-floor__ring--c"></span>
+          <span class="orbit-floor__core"></span>
+          <span class="orbit-floor__beam"></span>
+        </div>
+
+        <div class="orbit-camera" id="orbitCamera">
+          <div class="orbit-track" id="orbitTrack">
+            <article class="orbit-card orbit-card--ad-burden" data-index="0" style="--angle:0deg" aria-label="阿尔茨海默病全球负担与治疗现状">
+              <div class="ad-burden-card" aria-hidden="true">
+                <span class="ad-burden-card__frame"></span>
+                <span class="ad-burden-card__glow ad-burden-card__glow--a"></span>
+                <span class="ad-burden-card__glow ad-burden-card__glow--b"></span>
+                <span class="ad-burden-card__grid"></span>
+
+                <img
+                  class="ad-burden-card__mri"
+                  src="/assets/landing/ad-burden-mri-cutout.png"
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                  draggable="false"
+                />
+
+                <section class="ad-burden-card__growth">
+                  <div class="ad-burden-card__growth-row">
+                    <strong class="ad-burden-card__growth-number">55</strong>
+                    <span class="ad-burden-card__growth-percent">%</span>
+                    <span class="ad-burden-card__up-arrow" aria-hidden="true"></span>
+                  </div>
+                  <h3>全球AD患者将持续增长</h3>
+                  <p>2050年将达 <em>131M</em></p>
+                </section>
+
+                <span class="ad-burden-card__rule"></span>
+
+                <section class="ad-burden-card__status">
+                  <div class="ad-burden-card__status-left">
+                    <h4>现状 <span class="ad-burden-card__chevron" aria-hidden="true"></span></h4>
+                    <p>全球仅<em>4</em>种药物获批</p>
+                  </div>
+                  <span class="ad-burden-card__status-divider"></span>
+                  <div class="ad-burden-card__status-right">
+                    <strong>&lt;5<span>%</span></strong>
+                    <p>患者得到有效治疗</p>
+                  </div>
+                </section>
+
+                <section class="ad-burden-card__alert">
+                  <span class="ad-burden-card__alert-icon">!</span>
+                  <div>
+                    <strong>尚无治愈方法</strong>
+                    <p>治疗以延缓症状为主</p>
+                  </div>
+                </section>
+
+                <section class="ad-burden-card__efficacy">
+                  <svg class="ad-burden-card__ring" viewBox="0 0 120 120" role="presentation">
+                    <circle class="ad-burden-card__ring-base" cx="60" cy="60" r="51" pathLength="100"></circle>
+                    <circle class="ad-burden-card__ring-value" cx="60" cy="60" r="51" pathLength="100"></circle>
+                  </svg>
+                  <div class="ad-burden-card__efficacy-copy">
+                    <p>有效率不足</p>
+                    <strong>12<span>%</span></strong>
+                    <small>临床获益有限</small>
+                  </div>
+                </section>
+
+                <section class="ad-burden-card__timeline">
+                  <div class="ad-burden-card__timeline-line">
+                    <span class="ad-burden-card__timeline-node ad-burden-card__timeline-node--1"><b>发现晚</b></span>
+                    <span class="ad-burden-card__timeline-node ad-burden-card__timeline-node--2"><b>进展快</b></span>
+                    <span class="ad-burden-card__timeline-node ad-burden-card__timeline-node--3"><b>不可逆</b></span>
+                  </div>
+                  <p>大脑损伤一旦发生，<em>无法逆转</em></p>
+                </section>
+              </div>
+              <span class="orbit-card__cursor-light" aria-hidden="true"></span>
+            </article>
+
+            <article class="orbit-card orbit-card--dmsa-poster" data-index="1" style="--angle:72deg" aria-label="DMSA-Net 模型设计说明图">
+              <div class="dmsa-poster-card" aria-hidden="true">
+                <span class="dmsa-poster-card__frame"></span>
+                <img
+                  class="dmsa-poster-card__image"
+                  src="/assets/landing/dmsa-net-card2-design.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                />
+                <svg class="dmsa-poster-card__clarity" viewBox="0 0 2048 1152" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="dmsaPatch" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#e8ecef" stop-opacity="1"/>
+                      <stop offset=".52" stop-color="#e5e9ec" stop-opacity="1"/>
+                      <stop offset="1" stop-color="#e1e6ea" stop-opacity="1"/>
+                    </linearGradient>
+                    <linearGradient id="dmsaPatchSoft" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#e8ecef" stop-opacity="1"/>
+                      <stop offset=".62" stop-color="#e6eaed" stop-opacity="1"/>
+                      <stop offset="1" stop-color="#e3e7ea" stop-opacity="1"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Top headings -->
+                  <rect class="dmsa-clarity-patch" x="31" y="22" width="848" height="74" rx="8" fill="url(#dmsaPatchSoft)"/>
+                  <text class="dmsa-clarity-num" x="54" y="76">01</text>
+                  <text class="dmsa-clarity-heading" x="151" y="76">EDPB</text>
+                  <text class="dmsa-clarity-heading dmsa-clarity-heading--cn" x="286" y="76">通用知识 + 专病特化</text>
+
+                  <rect class="dmsa-clarity-patch" x="1058" y="22" width="938" height="74" rx="8" fill="url(#dmsaPatchSoft)"/>
+                  <text class="dmsa-clarity-num" x="1088" y="76">02</text>
+                  <text class="dmsa-clarity-heading" x="1167" y="76">MDC</text>
+                  <text class="dmsa-clarity-heading dmsa-clarity-heading--cn" x="1305" y="76">3×3 → 11×11 无缝覆盖</text>
+
+                  <!-- Route labels -->
+                  <rect class="dmsa-route-bg" x="164" y="141" width="318" height="35" rx="7"/>
+                  <text class="dmsa-route-text" x="174" y="165">通路A：ImageNet 预训练 / 通用视觉</text>
+                  <rect class="dmsa-route-bg" x="164" y="347" width="326" height="35" rx="7"/>
+                  <text class="dmsa-route-text" x="174" y="371">通路B：AD 专属空洞卷积 / 病灶特征</text>
+
+                  <!-- +47% -->
+                  <rect class="dmsa-clarity-patch" x="678" y="108" width="218" height="122" rx="8" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-clarity-stat" x="695" y="178">+47%</text>
+                  <text class="dmsa-clarity-mid" x="718" y="214">特征维度提升</text>
+
+                  <!-- Center model name -->
+                  <rect class="dmsa-clarity-patch" x="888" y="354" width="292" height="78" rx="8" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-clarity-model" x="910" y="410">DMSA-Net</text>
+
+                  <!-- MDC kernel descriptions -->
+                  <rect class="dmsa-clarity-patch dmsa-clarity-patch--box" x="1823" y="144" width="173" height="112" rx="10" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-kernel dmsa-blue" x="1838" y="182">3×3</text>
+                  <text class="dmsa-boxline" x="1841" y="214">r=1</text>
+                  <text class="dmsa-boxline" x="1841" y="245">看边缘纹理</text>
+
+                  <rect class="dmsa-clarity-patch dmsa-clarity-patch--box" x="1823" y="274" width="173" height="150" rx="10" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-kernel dmsa-gold" x="1838" y="329">7×7</text>
+                  <text class="dmsa-boxline" x="1841" y="361">r=3</text>
+                  <text class="dmsa-boxline" x="1841" y="392">命中海马体</text>
+                  <text class="dmsa-boxline" x="1841" y="420">(10–15 mm)</text>
+
+                  <rect class="dmsa-clarity-patch dmsa-clarity-patch--box" x="1823" y="443" width="173" height="112" rx="10" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-kernel dmsa-red" x="1838" y="481">11×11</text>
+                  <text class="dmsa-boxline" x="1841" y="513">r=5</text>
+                  <text class="dmsa-boxline" x="1841" y="545">捕捉脑室全貌</text>
+
+                  <!-- Lower headings -->
+                  <rect class="dmsa-clarity-patch" x="31" y="594" width="735" height="80" rx="8" fill="url(#dmsaPatchSoft)"/>
+                  <text class="dmsa-clarity-num" x="54" y="647">03</text>
+                  <text class="dmsa-clarity-heading" x="150" y="647">ILF</text>
+                  <text class="dmsa-clarity-heading dmsa-clarity-heading--cn" x="242" y="647">浅层细节 + 深层语义 = 不遗漏</text>
+
+                  <rect class="dmsa-clarity-patch" x="1302" y="594" width="694" height="80" rx="8" fill="url(#dmsaPatchSoft)"/>
+                  <text class="dmsa-clarity-num" x="1332" y="647">04</text>
+                  <text class="dmsa-clarity-heading" x="1422" y="647">SAM</text>
+                  <text class="dmsa-clarity-heading dmsa-clarity-heading--cn" x="1550" y="647">只盯着该看的地方</text>
+
+                  <!-- ILF equation -->
+                  <rect class="dmsa-clarity-patch" x="306" y="697" width="319" height="139" rx="13" fill="url(#dmsaPatch)"/>
+                  <text class="dmsa-eq" x="322" y="758">F</text>
+                  <text class="dmsa-eq-sub" x="350" y="767">fuse</text>
+                  <text class="dmsa-eq" x="390" y="758">= αF</text>
+                  <text class="dmsa-eq-sub" x="484" y="767">shallow</text>
+                  <text class="dmsa-eq" x="395" y="811">+ (1 − α)</text>
+                  <text class="dmsa-eq" x="548" y="811">F</text>
+                  <text class="dmsa-eq-sub dmsa-red" x="577" y="825">deep</text>
+
+                  <!-- Center legend: fully rebuilt so the tiny original labels stay crisp -->
+                  <g class="dmsa-legend">
+                    <rect class="dmsa-legend__interior" x="850" y="691" width="354" height="92" rx="11"/>
+
+                    <g class="dmsa-legend__item" transform="translate(858 711)">
+                      <rect class="dmsa-legend__cube" x="0" y="-17" width="13" height="24" rx="2"/>
+                      <path class="dmsa-legend__cube-edge" d="M13 -17l8 5v23l-8 5M13 -17l8 5M13 7l8 4"/>
+                      <text x="30" y="2">特征块</text>
+                    </g>
+                    <g class="dmsa-legend__item" transform="translate(972 711)">
+                      <path class="dmsa-legend__arrow" d="M0 -15v24m-8-8l8 8 8-8"/>
+                      <text x="18" y="2">下采样</text>
+                    </g>
+                    <g class="dmsa-legend__item" transform="translate(1085 711)">
+                      <path class="dmsa-legend__arrow dmsa-legend__arrow--blue" d="M0 9v-24m-8 8l8-8 8 8"/>
+                      <text x="18" y="2">上采样</text>
+                    </g>
+
+                    <g class="dmsa-legend__item" transform="translate(858 758)">
+                      <circle class="dmsa-legend__fusion" cx="8" cy="-5" r="11"/>
+                      <path class="dmsa-legend__fusion-mark" d="M8 -12v14M1 -5h14"/>
+                      <text x="30" y="2">融合</text>
+                    </g>
+                    <g class="dmsa-legend__item" transform="translate(963 758)">
+                      <path class="dmsa-legend__jump" d="M-4 -5h22m-7-7l8 7-8 7"/>
+                      <text x="27" y="2">跳跃连接</text>
+                    </g>
+                    <g class="dmsa-legend__item" transform="translate(1067 758)">
+                      <path class="dmsa-legend__attention" d="M-4 -5h22m-7-7l8 7-8 7"/>
+                      <text x="27" y="2">注意力引导</text>
+                    </g>
+                  </g>
+
+                  <!-- SAM captions -->
+                  <rect class="dmsa-clarity-patch" x="1258" y="685" width="738" height="58" rx="6" fill="url(#dmsaPatchSoft)"/>
+                  <text class="dmsa-caption" x="1283" y="722">Before（原始特征）</text>
+                  <text class="dmsa-caption dmsa-blue" x="1513" y="722">7×7 大核生成注意力图</text>
+                  <text class="dmsa-caption" x="1811" y="722">After（注意力后）</text>
+
+                  <!-- Bottom explanatory strip: enlarged and fully redrawn -->
+                  <g class="dmsa-steps">
+                    <rect class="dmsa-steps__interior" x="1050" y="1031" width="938" height="59" rx="7"/>
+                    <line class="dmsa-steps__divider" x1="1490" y1="1041" x2="1490" y2="1081"/>
+                    <line class="dmsa-steps__divider" x1="1745" y1="1041" x2="1745" y2="1081"/>
+
+                    <circle class="dmsa-steps__badge" cx="1245" cy="1061" r="14"/>
+                    <text class="dmsa-steps__badge-text" x="1245" y="1067">1</text>
+                    <text class="dmsa-step" x="1277" y="1068">7×7 大核生成热力图</text>
+
+                    <circle class="dmsa-steps__badge" cx="1515" cy="1061" r="14"/>
+                    <text class="dmsa-steps__badge-text" x="1515" y="1067">2</text>
+                    <text class="dmsa-step" x="1547" y="1068">压制眼眶 / 颅骨噪声</text>
+
+                    <circle class="dmsa-steps__badge" cx="1775" cy="1061" r="14"/>
+                    <text class="dmsa-steps__badge-text" x="1775" y="1067">3</text>
+                    <text class="dmsa-step" x="1807" y="1068">聚焦内嗅皮层</text>
+                  </g>
+                </svg>
+              </div>
+              <span class="orbit-card__cursor-light" aria-hidden="true"></span>
+            </article>
+
+            <article class="orbit-card orbit-card--analysis-poster" data-index="2" style="--angle:144deg" aria-label="DMSA-Net 模型分析流程：V1.0 到 V3.0">
+              <div class="analysis-poster-card" aria-hidden="true">
+                <img
+                  class="analysis-poster-card__image"
+                  src="/assets/landing/analysis-flow-card3-design.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                />
+                <svg class="analysis-poster-card__clarity" viewBox="0 0 2048 1152" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="analysisTextPatch" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#f5f7fa"/>
+                      <stop offset=".55" stop-color="#f0f4f8"/>
+                      <stop offset="1" stop-color="#edf2f7"/>
+                    </linearGradient>
+                    <linearGradient id="analysisTextPatchSoft" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#f6f8fb"/>
+                      <stop offset="1" stop-color="#eef3f8"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- V1 headings are preserved from the source poster to avoid patch seams. -->
+
+                  <!-- V1 class labels -->
+                  <rect x="93" y="706" width="112" height="46" rx="12" fill="#edf2f6"/>
+                  <rect x="223" y="706" width="112" height="46" rx="12" fill="#e9f4ef"/>
+                  <rect x="355" y="706" width="112" height="46" rx="12" fill="#f8f0df"/>
+                  <rect x="487" y="706" width="112" height="46" rx="12" fill="#f7eaea"/>
+                  <text class="analysis-t-class" x="149" y="739" text-anchor="middle">无损伤</text>
+                  <text class="analysis-t-class analysis-t-green" x="279" y="739" text-anchor="middle">极轻度</text>
+                  <text class="analysis-t-class analysis-t-orange" x="411" y="739" text-anchor="middle">轻度</text>
+                  <text class="analysis-t-class analysis-t-red" x="543" y="739" text-anchor="middle">中度</text>
+
+                  <!-- V1 feature labels -->
+                  <rect class="analysis-patch" x="199" y="802" width="131" height="45" rx="8" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip" x="206" y="834">DMSA-Net</text>
+                  <rect class="analysis-patch" x="438" y="798" width="123" height="65" rx="8" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-stat" x="458" y="829">99.9%</text>
+                  <text class="analysis-t-small" x="460" y="856">准确率</text>
+                  <rect class="analysis-patch" x="188" y="899" width="118" height="42" rx="8" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip" x="197" y="929">四分类</text>
+                  <rect class="analysis-patch" x="438" y="899" width="120" height="42" rx="8" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip" x="456" y="929">Web 应用</text>
+                  <!-- V1 completion bar stays untouched from the source poster. -->
+
+                  <!-- V2 heading stays untouched from the source poster. -->
+
+                  <!-- V2 metrics -->
+                  <rect class="analysis-patch" x="1098" y="363" width="116" height="31" rx="5" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-metric-head" x="1102" y="389">临床量表</text>
+                  <rect class="analysis-patch" x="1097" y="412" width="189" height="23" rx="3" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-metric" x="1102" y="430">MMSE</text><text class="analysis-t-metric" x="1280" y="430" text-anchor="end">26 / 30</text>
+                  <rect class="analysis-patch" x="1097" y="478" width="189" height="23" rx="3" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-metric" x="1102" y="496">MoCA</text><text class="analysis-t-metric" x="1280" y="496" text-anchor="end">22 / 30</text>
+                  <rect class="analysis-patch" x="1097" y="545" width="189" height="23" rx="3" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-metric" x="1102" y="563">CDR-SB</text><text class="analysis-t-metric" x="1280" y="563" text-anchor="end">2.0</text>
+                  <rect class="analysis-patch" x="1097" y="612" width="189" height="23" rx="3" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-metric" x="1102" y="630">FAQ</text><text class="analysis-t-metric" x="1280" y="630" text-anchor="end">4</text>
+
+                  <!-- V2 chips -->
+                  <rect class="analysis-patch" x="788" y="754" width="88" height="34" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="797" y="778">3D MRI</text>
+                  <rect class="analysis-patch" x="976" y="754" width="90" height="34" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="985" y="778">Clinical</text>
+                  <rect class="analysis-patch" x="1164" y="754" width="130" height="34" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="1174" y="778">pMCI / sMCI</text>
+                  <rect class="analysis-patch" x="786" y="835" width="111" height="34" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="796" y="859">转化预测</text>
+                  <rect class="analysis-patch" x="1112" y="835" width="112" height="34" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-next" x="1120" y="859">下一阶段</text>
+
+                  <!-- V2 bottom patient/cohort/fusion row stays untouched to preserve its icons and spacing. -->
+
+                  <!-- V3 heading stays untouched from the source poster. -->
+
+                  <!-- V3 input headers -->
+                  <rect class="analysis-patch" x="1463" y="360" width="98" height="35" rx="5" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-input" x="1512" y="385" text-anchor="middle">MRI</text>
+                  <rect class="analysis-patch" x="1655" y="360" width="98" height="35" rx="5" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-input" x="1704" y="385" text-anchor="middle">PET</text>
+                  <rect class="analysis-patch" x="1811" y="360" width="147" height="35" rx="5" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-input" x="1885" y="385" text-anchor="middle">临床 / 时间轴</text>
+
+                  <!-- V3 charts: fully redrawn as SVG. v6 gives each chart its own safe box so labels never collide. -->
+                  <g class="analysis-chart-redraw">
+                    <!-- left: cognitive trajectory -->
+                    <rect class="analysis-chart-card" x="1408" y="592" width="260" height="286" rx="18"/>
+                    <text class="analysis-chart-title" x="1426" y="626">认知评分轨迹（示例）</text>
+
+                    <g class="analysis-chart-legend">
+                      <line class="analysis-chart-line analysis-chart-blue" x1="1426" y1="653" x2="1440" y2="653"/>
+                      <text x="1446" y="658">无损伤</text>
+                      <line class="analysis-chart-line analysis-chart-green" x1="1490" y1="653" x2="1504" y2="653"/>
+                      <text x="1510" y="658">极轻度</text>
+                      <line class="analysis-chart-line analysis-chart-orange" x1="1544" y1="653" x2="1558" y2="653"/>
+                      <text x="1564" y="658">轻度</text>
+                      <line class="analysis-chart-line analysis-chart-red" x1="1595" y1="653" x2="1609" y2="653"/>
+                      <text x="1615" y="658">中度</text>
+                    </g>
+
+                    <g class="analysis-chart-grid">
+                      <line x1="1452" y1="681" x2="1644" y2="681"/>
+                      <line x1="1452" y1="733" x2="1644" y2="733"/>
+                      <line x1="1452" y1="784" x2="1644" y2="784"/>
+                      <line x1="1452" y1="835" x2="1644" y2="835"/>
+                      <line x1="1452" y1="681" x2="1452" y2="835"/>
+                      <line x1="1500" y1="681" x2="1500" y2="835"/>
+                      <line x1="1548" y1="681" x2="1548" y2="835"/>
+                      <line x1="1596" y1="681" x2="1596" y2="835"/>
+                      <line x1="1644" y1="681" x2="1644" y2="835"/>
+                    </g>
+
+                    <g class="analysis-chart-axis">
+                      <text x="1440" y="686" text-anchor="end">30</text>
+                      <text x="1440" y="738" text-anchor="end">20</text>
+                      <text x="1440" y="789" text-anchor="end">10</text>
+                      <text x="1440" y="840" text-anchor="end">0</text>
+                      <text x="1452" y="861" text-anchor="middle">0</text>
+                      <text x="1500" y="861" text-anchor="middle">12</text>
+                      <text x="1548" y="861" text-anchor="middle">24</text>
+                      <text x="1596" y="861" text-anchor="middle">36</text>
+                      <text x="1644" y="861" text-anchor="middle">48 月</text>
+                    </g>
+
+                    <path class="analysis-chart-band analysis-chart-band-blue" d="M1452 676 L1500 679 L1548 687 L1596 698 L1644 711 L1644 730 L1596 716 L1548 703 L1500 693 L1452 688 Z"/>
+                    <path class="analysis-chart-band analysis-chart-band-green" d="M1452 678 L1500 689 L1548 706 L1596 731 L1644 755 L1644 772 L1596 749 L1548 723 L1500 705 L1452 690 Z"/>
+                    <path class="analysis-chart-band analysis-chart-band-orange" d="M1452 679 L1500 704 L1548 734 L1596 766 L1644 790 L1644 807 L1596 785 L1548 754 L1500 722 L1452 691 Z"/>
+                    <path class="analysis-chart-band analysis-chart-band-red" d="M1452 680 L1500 718 L1548 762 L1596 804 L1644 829 L1644 842 L1596 819 L1548 779 L1500 735 L1452 691 Z"/>
+
+                    <polyline class="analysis-chart-curve analysis-chart-blue" points="1452,682 1477,683 1500,685 1527,688 1548,693 1577,699 1596,706 1620,714 1644,721"/>
+                    <polyline class="analysis-chart-curve analysis-chart-green" points="1452,683 1477,688 1500,697 1527,706 1548,715 1577,727 1596,740 1620,754 1644,764"/>
+                    <polyline class="analysis-chart-curve analysis-chart-orange" points="1452,684 1477,696 1500,713 1527,728 1548,744 1577,760 1596,776 1620,788 1644,799"/>
+                    <polyline class="analysis-chart-curve analysis-chart-red" points="1452,684 1477,702 1500,727 1527,750 1548,771 1577,792 1596,811 1620,824 1644,836"/>
+
+                    <!-- right: survival curve; stays fully inside its own original panel -->
+                    <rect class="analysis-chart-card" x="1696" y="592" width="264" height="286" rx="18"/>
+                    <text class="analysis-chart-title" x="1714" y="626">转化风险（生存曲线）</text>
+
+                    <g class="analysis-chart-grid">
+                      <line x1="1742" y1="674" x2="1938" y2="674"/>
+                      <line x1="1742" y1="715" x2="1938" y2="715"/>
+                      <line x1="1742" y1="758" x2="1938" y2="758"/>
+                      <line x1="1742" y1="800" x2="1938" y2="800"/>
+                      <line x1="1742" y1="840" x2="1938" y2="840"/>
+                      <line x1="1742" y1="674" x2="1742" y2="840"/>
+                      <line x1="1791" y1="674" x2="1791" y2="840"/>
+                      <line x1="1840" y1="674" x2="1840" y2="840"/>
+                      <line x1="1889" y1="674" x2="1889" y2="840"/>
+                      <line x1="1938" y1="674" x2="1938" y2="840"/>
+                    </g>
+
+                    <g class="analysis-chart-axis">
+                      <text x="1731" y="679" text-anchor="end">1.00</text>
+                      <text x="1731" y="720" text-anchor="end">0.96</text>
+                      <text x="1731" y="763" text-anchor="end">0.56</text>
+                      <text x="1731" y="805" text-anchor="end">0.35</text>
+                      <text x="1731" y="845" text-anchor="end">0.00</text>
+                      <text x="1742" y="862" text-anchor="middle">0</text>
+                      <text x="1791" y="862" text-anchor="middle">12</text>
+                      <text x="1840" y="862" text-anchor="middle">24</text>
+                      <text x="1889" y="862" text-anchor="middle">36</text>
+                      <text x="1938" y="862" text-anchor="middle">48 月</text>
+                    </g>
+
+                    <path class="analysis-survival analysis-chart-blue" d="M1742 676 H1771 V680 H1801 V684 H1830 V690 H1859 V700 H1888 V713 H1914 V729 H1938 V744"/>
+                    <path class="analysis-survival analysis-chart-green" d="M1742 676 H1757 V686 H1778 V696 H1802 V708 H1826 V724 H1848 V746 H1871 V770 H1894 V796 H1916 V816 H1938 V823"/>
+                    <path class="analysis-survival analysis-chart-red" d="M1742 676 H1755 V695 H1770 V713 H1785 V731 H1801 V750 H1817 V770 H1835 V791 H1853 V811 H1874 V827 H1895 V837 H1917 V840 H1938"/>
+
+                    <text class="analysis-chart-note" x="1762" y="789">Log-rank</text>
+                    <text class="analysis-chart-note" x="1762" y="814">p &lt; 0.001</text>
+                  </g>
+
+                  <!-- V3 bottom chips -->
+                  <rect class="analysis-patch" x="1487" y="906" width="91" height="36" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="1496" y="931">多模态</text>
+                  <rect class="analysis-patch" x="1653" y="906" width="111" height="36" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="1663" y="931">Trajectory</text>
+                  <rect class="analysis-patch" x="1830" y="906" width="103" height="36" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-chip2" x="1841" y="931">Survival</text>
+                  <rect class="analysis-patch" x="1482" y="986" width="101" height="36" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-next" x="1497" y="1011">2027</text>
+                  <rect class="analysis-patch" x="1777" y="986" width="129" height="36" rx="6" fill="url(#analysisTextPatch)"/>
+                  <text class="analysis-t-next" x="1787" y="1011">未来蓝图</text>
+                </svg>
+                <span class="analysis-poster-card__frame" aria-hidden="true"></span>
+              </div>
+              <span class="orbit-card__cursor-light" aria-hidden="true"></span>
+            </article>
+
+            <article class="orbit-card" data-index="3" style="--angle:216deg">
+              <div class="orbit-card__film orbit-card__film--4"></div>
+              <span class="orbit-card__cursor-light" aria-hidden="true"></span>
+              <div class="orbit-card__meta">
+                <span class="orbit-card__eyebrow">RESEARCH REEL · 04</span>
+                <span class="orbit-card__badge">COHORT FIELD</span>
+              </div>
+              <div class="orbit-card__body">
+                <h3 class="orbit-card__title"><span>多中心队列</span><span>对照界面</span></h3>
+                <p class="orbit-card__desc">以半透明玻璃卡片对比不同中心、批次与受试群体的分布特征，让科研协同更像操作一台未来影像装置。</p>
+              </div>
+              <div class="orbit-card__foot">
+                <span>Cohort Compare</span>
+                <span>Cross-Site Alignment</span>
+              </div>
+            </article>
+
+            <article class="orbit-card" data-index="4" style="--angle:288deg">
+              <div class="orbit-card__film orbit-card__film--5"></div>
+              <span class="orbit-card__cursor-light" aria-hidden="true"></span>
+              <div class="orbit-card__meta">
+                <span class="orbit-card__eyebrow">RESEARCH REEL · 05</span>
+                <span class="orbit-card__badge">RELIABILITY</span>
+              </div>
+              <div class="orbit-card__body">
+                <h3 class="orbit-card__title"><span>可信度与</span><span>风险雷达</span></h3>
+                <p class="orbit-card__desc">将不确定性、鲁棒性与风险阈值注入同一空间界面，让结果不仅可看见，也能够被审视、被验证、被信任。</p>
+              </div>
+              <div class="orbit-card__foot">
+                <span>Reliability Radar</span>
+                <span>Risk Boundary</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部滚动提示 -->
+    <div class="scroll-indicator" role="button" tabindex="0" aria-label="向下滚动探索更多内容">
+      <span class="scroll-indicator__text">向下探索</span>
+      <span class="scroll-indicator__line" aria-hidden="true"></span>
+      <svg class="scroll-indicator__arrow" viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      </svg>
+      <span class="scroll-indicator__glow" aria-hidden="true"></span>
+    </div>
+
+    <div id="brainError" class="brain-error" hidden>3D 模型加载失败，请通过本地 HTTP 服务打开此页面。</div>
+
+    </div><!-- /hero-area -->
+  </main>
