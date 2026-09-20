@@ -1,0 +1,16 @@
+{
+  "protocol": "P-CV v2 -> final full-train model",
+  "train_images": 10240,
+  "test_policy": "sealed; not loaded by final_train.py",
+  "fixed_epoch_source": "5-fold aligned-epoch validation analysis; fixed before sealed test",
+  "final_epochs": 126,
+  "batch_size": 16,
+  "learning_rate": 0.001,
+  "lr_gamma": 0.96,
+  "seed": 42,
+  "num_workers": 6,
+  "deterministic": false,
+  "manifest_sha256": "51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd",
+  "architecture_fingerprint": "8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975",
+  "resume_save_every": 5
+}

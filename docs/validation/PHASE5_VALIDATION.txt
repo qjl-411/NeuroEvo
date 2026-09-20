@@ -1,0 +1,15 @@
+Phase 5 validation summary
+==========================
+
+Backend
+- pytest: 20 passed
+- python compileall: PASS
+
+Frontend
+- WorkspacePage.tsx TypeScript/TSX transpile syntax diagnostics: 0 errors
+- Full npm build was not completed in the packaging environment because dependency installation timed out; run `npm ci && npm run build` locally/server-side before deployment.
+
+Important
+- The frozen DMSA-Net architecture/checkpoint/preprocessing/class mapping were not changed.
+- The production .pth checkpoint is intentionally not included.
+- DICOM is explicitly not production-enabled in Phase 5.

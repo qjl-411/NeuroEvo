@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "model_name": "DMSA-Net",
+  "task": "4-class cognitive impairment MRI classification",
+  "provenance": {
+    "source": "Recovered frozen P-CV v2 / final-train / sealed-test artifacts",
+    "train_manifest_sha256": "51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd",
+    "sealed_test_manifest_sha256": "bc8e53e24722167fb3bf0ab468863ed8d0bcaec1341bb52007021802c31126a6",
+    "final_model_sha256": "ba96575888e35764e3ff196674e52757d9a5f9c90742a38aa8f1d1f9a8457658",
+    "architecture_fingerprint": "8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975",
+    "sealed_test_interpretation_rule": "This held-out test result is final evaluation only and must not be used to retune epochs, architecture, augmentation, or other hyperparameters."
+  },
+  "cross_validation": {
+    "fold_count": 5,
+    "epochs_per_fold": 200,
+    "selection_method": "aligned-epoch mean validation analysis across all five folds",
+    "selected_epoch": 126,
+    "selected_epoch_metrics": {
+      "train_loss_mean": 0.00324361878436064,
+      "val_loss_mean": 0.047506314710176634,
+      "accuracy_mean": 0.989453125,
+      "precision_macro_mean": 0.9895284918293573,
+      "recall_macro_mean": 0.989453125,
+      "f1_macro_mean": 0.9894678729432478,
+      "kappa_mean": 0.9859375
+    },
+    "aligned_epoch_maxima": {
+      "accuracy": {
+        "epoch": 126,
+        "value": 0.989453125
+      },
+      "f1_macro": {
+        "epoch": 126,
+        "value": 0.9894678729432478
+      },
+      "kappa": {
+        "epoch": 126,
+        "value": 0.9859375
+      }
+    },
+    "mean_of_per_fold_best": {
+      "accuracy": 0.99140625,
+      "precision": 0.9914660323502253,
+      "recall": 0.99140625,
+      "f1": 0.9914157013464925,
+      "kappa": 0.9885416666666668
+    },
+    "fold_best": [
+      {
+        "fold": 1,
+        "accuracy": 0.99365234375,
+        "precision": 0.9936683720402775,
+        "recall": 0.99365234375,
+        "f1": 0.9936541965683131,
+        "kappa": 0.9915364583333334,
+        "val_loss": 0.029903508886975332,
+        "epoch": 119
+      },
+      {
+        "fold": 2,
+        "accuracy": 0.9921875,
+        "precision": 0.9923442049403588,
+        "recall": 0.9921875,
+        "f1": 0.9922057995295887,
+        "kappa": 0.9895833333333334,
+        "val_loss": 0.032279044200417426,
+        "epoch": 173
+      },
+      {
+        "fold": 3,
+        "accuracy": 0.99072265625,
+        "precision": 0.9907910027974305,
+        "recall": 0.99072265625,
+        "f1": 0.9907395606100087,
+        "kappa": 0.9876302083333334,
+        "val_loss": 0.05664556343869072,
+        "epoch": 115
+      },
+      {
+        "fold": 4,
+        "accuracy": 0.99072265625,
+        "precision": 0.9907439437806953,
+        "recall": 0.99072265625,
+        "f1": 0.990723461567283,
+        "kappa": 0.9876302083333334,
+        "val_loss": 0.0543517193385223,
+        "epoch": 109
+      },
+      {
+        "fold": 5,
+        "accuracy": 0.98974609375,
+        "precision": 0.9897826381923645,
+        "recall": 0.98974609375,
+        "f1": 0.9897554884572688,
+        "kappa": 0.986328125,
+        "val_loss": 0.051049019255124936,
+        "epoch": 108
+      }
+    ],
+    "curve_artifact": "cv_aligned_epoch_mean.csv"
+  },
+  "final_training": {
+    "images": 10240,
+    "epochs": 126,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "lr_gamma": 0.96,
+    "seed": 42,
+    "history_artifact": "final_train_history.csv",
+    "last_train_loss": 0.0045358311537317,
+    "minimum_train_loss": 0.0015741626317541,
+    "minimum_train_loss_epoch": 121,
+    "note": "The final full-train run has no validation split. Validation metrics shown by the platform must come from cross-validation, not from this run."
+  },
+  "sealed_test": {
+    "images": 1279,
+    "accuracy": 0.9898358092259578,
+    "precision_macro": 0.9932455096409433,
+    "recall_macro": 0.9925765662410215,
+    "f1_macro": 0.9929036746576247,
+    "kappa": 0.9832487728998252,
+    "loss": 0.060728755267097714,
+    "correct": 1266,
+    "incorrect": 13,
+    "per_class": [
+      {
+        "class_name": "Mild Impairment",
+        "support": 179,
+        "predicted_count": 179,
+        "true_positive": 178,
+        "precision": 0.994413407821229,
+        "recall": 0.994413407821229,
+        "f1": 0.994413407821229
+      },
+      {
+        "class_name": "Moderate Impairment",
+        "support": 12,
+        "predicted_count": 12,
+        "true_positive": 12,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      {
+        "class_name": "No Impairment",
+        "support": 640,
+        "predicted_count": 644,
+        "true_positive": 636,
+        "precision": 0.9875776397515528,
+        "recall": 0.99375,
+        "f1": 0.9906542056074766
+      },
+      {
+        "class_name": "Very Mild Impairment",
+        "support": 448,
+        "predicted_count": 444,
+        "true_positive": 440,
+        "precision": 0.990990990990991,
+        "recall": 0.9821428571428571,
+        "f1": 0.9865470852017937
+      }
+    ],
+    "confusion_matrix_artifact": "sealed_test_confusion_matrix.csv",
+    "evaluated_at": "2026-08-26T09:25:44.294007",
+    "interpretation_rule": "This held-out test result is final evaluation only and must not be used to retune epochs, architecture, augmentation, or other hyperparameters.",
+    "train_test_exact_sha256_overlap": 0
+  }
+}

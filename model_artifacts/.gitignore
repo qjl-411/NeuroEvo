@@ -1,0 +1,12 @@
+# Never commit production model weights.
+*.pth
+*.pt
+*.ckpt
+*.onnx
+
+# Keep all small provenance/metrics files in Git.
+!.gitignore
+!README.md
+!*.json
+!*.csv
+!*.txt

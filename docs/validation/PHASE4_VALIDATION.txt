@@ -1,0 +1,22 @@
+Phase 4 patch validation performed in the build environment
+===========================================================
+
+1. Python compileall for new Phase 4 modules/scripts: PASS
+
+2. Phase 4 artifact tests:
+   5 passed
+
+3. Frozen model-performance artifact verifier: PASS
+   Epoch 126 mean accuracy = 0.989453125
+   Epoch 126 mean F1       = 0.989467873
+   Epoch 126 mean kappa    = 0.985937500
+
+4. Fail-closed verifier behavior tested against a single checkpoint chunk:
+   - checkpoint exists: PASS
+   - exact size: FAIL (expected, because a chunk is not the complete checkpoint)
+   - exact SHA256: FAIL (expected)
+   - verifier exit code: 2
+   - verifier correctly refused to continue to torch.load
+
+The full final_model_epoch126.pth was not available as one readable file inside the build runtime,
+so the final strict-load/forward acceptance must be run locally with the user's recovered complete checkpoint.

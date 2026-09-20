@@ -1,0 +1,26 @@
+.git/
+node_modules/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+.env
+apps/api/data/*.db
+apps/api/data/*.db-*
+apps/api/data/pdfs/
+apps/web/dist/
+
+# ---- 清理补充（生成物 / 临时文件，2026-09-20）----
+*.log
+*.tmp
+*.temp
+*.part
+.vite/
+.ruff_cache/
+.mypy_cache/
+coverage/
+
+# ---- 工具/操作数据（非项目源码，勿提交）----
+.workbuddy/

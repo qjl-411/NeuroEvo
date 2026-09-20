@@ -1,0 +1,134 @@
+{
+  "ready": true,
+  "checkpoint_path": "E:\\Code\\NeuroEvo\\test\\NeuroEvo-AD_literature_full\\model_artifacts\\final_model_epoch126.pth",
+  "checkpoint_sha256": "ba96575888e35764e3ff196674e52757d9a5f9c90742a38aa8f1d1f9a8457658",
+  "checkpoint_size_bytes": 228051470,
+  "resolved_device": "cpu",
+  "checks": [
+    {
+      "name": "checkpoint_exists",
+      "passed": true,
+      "detail": "E:\\Code\\NeuroEvo\\test\\NeuroEvo-AD_literature_full\\model_artifacts\\final_model_epoch126.pth"
+    },
+    {
+      "name": "checkpoint_size",
+      "passed": true,
+      "detail": "actual=228051470, expected=228051470"
+    },
+    {
+      "name": "checkpoint_sha256",
+      "passed": true,
+      "detail": "actual=ba96575888e35764e3ff196674e52757d9a5f9c90742a38aa8f1d1f9a8457658, expected=ba96575888e35764e3ff196674e52757d9a5f9c90742a38aa8f1d1f9a8457658"
+    },
+    {
+      "name": "torch_load",
+      "passed": true,
+      "detail": "Checkpoint deserialized on CPU."
+    },
+    {
+      "name": "checkpoint_mapping",
+      "passed": true,
+      "detail": "Top-level checkpoint is a dict."
+    },
+    {
+      "name": "checkpoint_type",
+      "passed": true,
+      "detail": "actual='final-model-for-sealed-test', expected='final-model-for-sealed-test'"
+    },
+    {
+      "name": "epoch",
+      "passed": true,
+      "detail": "actual=126, expected=126"
+    },
+    {
+      "name": "num_classes",
+      "passed": true,
+      "detail": "actual=4, expected=4"
+    },
+    {
+      "name": "class_to_idx",
+      "passed": true,
+      "detail": "actual={'Mild Impairment': 0, 'Moderate Impairment': 1, 'No Impairment': 2, 'Very Mild Impairment': 3}"
+    },
+    {
+      "name": "architecture_fingerprint_metadata",
+      "passed": true,
+      "detail": "actual='8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975', expected=8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975"
+    },
+    {
+      "name": "train_manifest_sha256",
+      "passed": true,
+      "detail": "actual='51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd', expected=51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd"
+    },
+    {
+      "name": "model_state_dict",
+      "passed": true,
+      "detail": "tensor_entries=1000"
+    },
+    {
+      "name": "state_dict_tensor_count",
+      "passed": true,
+      "detail": "actual=1000, expected=1000"
+    },
+    {
+      "name": "model_module_import",
+      "passed": true,
+      "detail": "Imported app.ml.dmsa.model."
+    },
+    {
+      "name": "model_create",
+      "passed": true,
+      "detail": "Created local DMSA-Net architecture."
+    },
+    {
+      "name": "architecture_fingerprint_local",
+      "passed": true,
+      "detail": "actual=8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975, expected=8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975"
+    },
+    {
+      "name": "parameter_count",
+      "passed": true,
+      "detail": "actual=56812813, expected=56812813"
+    },
+    {
+      "name": "strict_state_dict_load",
+      "passed": true,
+      "detail": "load_state_dict(strict=True) succeeded."
+    },
+    {
+      "name": "device",
+      "passed": true,
+      "detail": "cpu"
+    },
+    {
+      "name": "forward_shape",
+      "passed": true,
+      "detail": "actual=(1, 4), expected=(1, 4)"
+    },
+    {
+      "name": "forward_finite",
+      "passed": true,
+      "detail": "Logits/probabilities are finite."
+    },
+    {
+      "name": "probability_sum",
+      "passed": true,
+      "detail": "sum=1.0000000000"
+    }
+  ],
+  "metadata": {
+    "checkpoint_type": "final-model-for-sealed-test",
+    "epoch": 126,
+    "num_classes": 4,
+    "class_to_idx": {
+      "Mild Impairment": 0,
+      "Moderate Impairment": 1,
+      "No Impairment": 2,
+      "Very Mild Impairment": 3
+    },
+    "architecture_fingerprint": "8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975",
+    "manifest_sha256": "51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd",
+    "state_dict_tensor_count": 1000,
+    "total_parameters": 56812813
+  }
+}

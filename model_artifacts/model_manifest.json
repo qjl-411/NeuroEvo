@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "model": {
+    "name": "DMSA-Net",
+    "checkpoint_filename": "final_model_epoch126.pth",
+    "checkpoint_type": "final-model-for-sealed-test",
+    "checkpoint_sha256": "ba96575888e35764e3ff196674e52757d9a5f9c90742a38aa8f1d1f9a8457658",
+    "checkpoint_size_bytes": 228051470,
+    "epoch": 126,
+    "architecture_fingerprint": "8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975",
+    "total_parameters": 56812813,
+    "trainable_parameters": 56812813,
+    "state_dict_tensor_count": 1000,
+    "num_classes": 4,
+    "class_to_idx": {
+      "Mild Impairment": 0,
+      "Moderate Impairment": 1,
+      "No Impairment": 2,
+      "Very Mild Impairment": 3
+    }
+  },
+  "input": {
+    "mode": "RGB",
+    "width": 224,
+    "height": 224,
+    "preprocessing": [
+      {
+        "op": "Resize",
+        "size": [
+          224,
+          224
+        ]
+      },
+      {
+        "op": "ToTensor"
+      },
+      {
+        "op": "Normalize",
+        "mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "std": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "validated_serving_formats": [
+      ".jpg",
+      ".jpeg",
+      ".png"
+    ],
+    "dicom_status": "not_validated_for_production"
+  },
+  "training": {
+    "protocol": "P-CV v2 -> final full-train model",
+    "train_images": 10240,
+    "selected_epoch_source": "5-fold aligned-epoch validation analysis; fixed before sealed test",
+    "manifest_sha256": "51f5b251f9e7cce6c557798ae8fa8e263a6baf58c125524be4e1a1df4bd9edfd",
+    "seed": 42
+  },
+  "sealed_test": {
+    "manifest_sha256": "bc8e53e24722167fb3bf0ab468863ed8d0bcaec1341bb52007021802c31126a6",
+    "images": 1279,
+    "accuracy": 0.9898358092259578,
+    "f1_macro": 0.9929036746576247,
+    "kappa": 0.9832487728998252,
+    "train_test_exact_sha256_overlap": 0
+  },
+  "deployment": {
+    "checkpoint_is_not_committed_to_git": true,
+    "metrics_file": "cv_aligned_epoch_mean.csv",
+    "performance_file": "model_performance.json"
+  }
+}

@@ -1,0 +1,16 @@
+aeb62dc5e9a012ded3c1a21606ed15121bff48dedd112e01c2b176e64e8a46b9  ./CHANGES_v10.diff
+e79372eee00979aad0acc49d8e60334ea0b63059947c7e7a3ece8d8ac9fecb7c  ./LOCALIZE_LITERATURE_PDFS.bat
+d01a843362d8de877cbdcc967c3086cf9492f72109ba055dddf2a056c6790f4e  ./LOCALIZE_LITERATURE_PDFS.sh
+432e412274a07221f2f10bf5e5553024ca04605c58ae28154bcbe914d57e6652  ./README_v10_中文.txt
+8465577437eed4b40a00196e603709d772e5675949b543043d9d8dcf10ce1e19  ./apps/api/app/literature/pdf_download.py
+d5ffa24708858ea43d2739ae84fe82bc140d80aa8013ba5e7a793dfb019a01e1  ./apps/api/app/literature/repository.py
+b24abbd03527b95b0812070daedd820f0170cfebbb2004e842d22b33f3e6fc37  ./apps/api/app/literature/schemas.py
+c822f55f0682d3bdc52fdfe4b225ed32c88a948ddd60cb84307aa03704437b7b  ./apps/api/app/routes/literature.py
+082d6d0948bcba79d256095f2a8f946c3231f9b1535073504692d3eecf38d0af  ./apps/api/data/pdf_localization_manifest.csv
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./apps/api/data/pdfs/.gitkeep
+96b1d1a3111edeae6d582b33259665b801c967da8348f96c60a83ba07a3c4db5  ./apps/api/scripts/literature_sync.py
+f6159adfd7a8d2012f98bbda5524381c84d4e7d7329552e2e0df4e42404ac79d  ./apps/api/scripts/localize_literature_pdfs.py
+4ae3be3b28c93929aae4a782de5d1b7e7e3e470b17c5f55476dbf9cc1fe03610  ./apps/web/src/auth/session.tsx
+9f305e2ed90384d2aca058b9c9fdf09caeff1b98476d39f27eb1deb785549531  ./apps/web/src/pages/LiteratureSearchPage.tsx
+febad72a7553fc3971fdd67fc4c5f9d9ec1ffa8dce032c71741c16c70f15baae  ./apps/web/src/pages/ReportsPage.tsx
+f391e1c1b61d2010d6530bf628ce1c5912e1d10e9e7bba40aaae09b8f80930f6  ./apps/web/src/types/literature.ts

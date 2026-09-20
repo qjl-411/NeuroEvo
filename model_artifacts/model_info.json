@@ -1,0 +1,7 @@
+{
+  "total_params": 56812813,
+  "trainable_params": 56812813,
+  "spatial_attention_params": 459,
+  "multi_scale_dilated_params": 10623003,
+  "architecture_fingerprint": "8e542321b2886db4db0986dc19d8d8a0984a39c472c086e55ac1fd1db3d76975"
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=NeuroEvo-AD verified DMSA-Net API
+After=network.target
+
+[Service]
+Type=simple
+User=neuroevo
+Group=neuroevo
+WorkingDirectory=/srv/neuroevo/apps/api
+EnvironmentFile=/srv/neuroevo/.env.production
+ExecStart=/srv/neuroevo/apps/api/.venv/bin/python /srv/neuroevo/apps/api/scripts/serve_verified.py --checkpoint /srv/neuroevo/model_artifacts/final_model_epoch126.pth --device cuda:0 --host 127.0.0.1 --port 8000
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=180
+TimeoutStopSec=30
+KillSignal=SIGINT
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

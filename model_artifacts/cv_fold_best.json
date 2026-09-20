@@ -1,0 +1,61 @@
+{
+  "fold_count": 5,
+  "selection_rule": "Per-fold best validation accuracy reported from each fold's frozen 200-epoch run.",
+  "folds": [
+    {
+      "fold": 1,
+      "accuracy": 0.99365234375,
+      "precision": 0.9936683720402775,
+      "recall": 0.99365234375,
+      "f1": 0.9936541965683131,
+      "kappa": 0.9915364583333334,
+      "val_loss": 0.029903508886975332,
+      "epoch": 119
+    },
+    {
+      "fold": 2,
+      "accuracy": 0.9921875,
+      "precision": 0.9923442049403588,
+      "recall": 0.9921875,
+      "f1": 0.9922057995295887,
+      "kappa": 0.9895833333333334,
+      "val_loss": 0.032279044200417426,
+      "epoch": 173
+    },
+    {
+      "fold": 3,
+      "accuracy": 0.99072265625,
+      "precision": 0.9907910027974305,
+      "recall": 0.99072265625,
+      "f1": 0.9907395606100087,
+      "kappa": 0.9876302083333334,
+      "val_loss": 0.05664556343869072,
+      "epoch": 115
+    },
+    {
+      "fold": 4,
+      "accuracy": 0.99072265625,
+      "precision": 0.9907439437806953,
+      "recall": 0.99072265625,
+      "f1": 0.990723461567283,
+      "kappa": 0.9876302083333334,
+      "val_loss": 0.0543517193385223,
+      "epoch": 109
+    },
+    {
+      "fold": 5,
+      "accuracy": 0.98974609375,
+      "precision": 0.9897826381923645,
+      "recall": 0.98974609375,
+      "f1": 0.9897554884572688,
+      "kappa": 0.986328125,
+      "val_loss": 0.051049019255124936,
+      "epoch": 108
+    }
+  ],
+  "mean_best_accuracy": 0.99140625,
+  "mean_best_precision": 0.9914660323502253,
+  "mean_best_recall": 0.99140625,
+  "mean_best_f1": 0.9914157013464925,
+  "mean_best_kappa": 0.9885416666666668
+}
